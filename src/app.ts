@@ -1,6 +1,8 @@
 import { getPosts, getPostsGestioneErrore } from "./richieste";
 import operazione, { somma, sottrazione } from "./matematica";//operazione è la funzione esportata di default
 import * as mate from "./matematica";
+import path from "node:path";
+import process from "node:process";
 // setInterval(() => {
 
 //     console.clear();
@@ -96,7 +98,19 @@ console.log("=====");
 import runFsExamples from "./es-fs";
 runFsExamples();
 
-console.log("=====");
+console.log("=====only users====");
 import printUsers from "./users";
 printUsers();
+
+console.log("=====users and others=====");
+import { salvaJson } from "./json-manager";
+let dataDir = path.join(process.cwd(), "data");
+
+let promises = [];
+promises.push(salvaJson(path.join(dataDir, "users.json"), "https://jsonplaceholder.typicode.com/users"));
+promises.push(salvaJson(path.join(dataDir, "posts.json"), "https://jsonplaceholder.typicode.com/posts"));
+promises.push(salvaJson(path.join(dataDir, "albums.json"), "https://jsonplaceholder.typicode.com/albums"));
+promises.push(salvaJson(path.join(dataDir, "prodotti.json"), "https://dummyjson.com/products"));
+
+Promise.all(promises).then(() => console.log("FINITO TUTTO"));
 
