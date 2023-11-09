@@ -76,7 +76,7 @@ export default () => {
             console.log("il percorso corrisponde ad una cartella");
         }
         const dataUltimaModifica = DateTime.fromMillis(entity.mtimeMs);
-        //console.log(chalk.yellow("data ultima modifica"), chalk.red(dataUltimaModifica.toLocaleString()), chalk.green(dataUltimaModifica.toISOTime()));
+        console.log(chalk.yellow("data ultima modifica"), chalk.red(dataUltimaModifica.toLocaleString()), chalk.green(dataUltimaModifica.toISOTime()));
     } catch (err) {
         console.error("errore nelle statistiche del file: ", err);
     }

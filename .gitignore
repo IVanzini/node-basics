@@ -1,3 +1,4 @@
 /dist
 /node_modules
 data/file2.txt
+data/users.json
